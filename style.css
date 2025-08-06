@@ -1,4 +1,4 @@
-
+/* webpage styling */
 body {
   font-family: sans-serif;
   padding: 20px;
@@ -6,6 +6,7 @@ body {
   background-color: #fafafa;
 }
 
+/* textbox styling */
 input[type="text"] {
   padding: 10px;
   width: 250px;
@@ -13,12 +14,14 @@ input[type="text"] {
   font-size: 16px;
 }
 
+/*  button styling  */
 button {
   padding: 10px 15px;
   font-size: 16px;
   cursor: pointer;
 }
 
+/* Palette styling */
 .color-swatch {
   width: 300px;
   height: 50px;
