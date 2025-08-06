@@ -20,3 +20,34 @@ function colorNameToRGB(name) {
     parseInt(rgbMatch[3])
   ];
 }
+
+generateBtn.addEventListener("click", () => {
+  const colorName = userColorInput.value.trim().toLowerCase();
+  if (colorName === "") {
+    results.innerHTML = `<p style="color:red;"> Enter a color name.</p>`;
+    return;
+  }
+
+  const rgb = colorNameToRGB(colorName);
+
+  if (!rgb) {
+    results.innerHTML = `<p style="color:red;">Invalid color name: "${colorName}". Write any other color name .</p>`;
+    return;
+  }
+
+  fetch("http://colormind.io/api/", {
+    method: "POST",
+    body: JSON.stringify({
+      model: "default",
+      input: [rgb, "N", "N", "N", "N"]
+    })
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      displayPalette(data.result);
+    })
+    .catch((error) => {
+      results.innerHTML = `<p style="color:red;">Api do not have palette for this word . Try any other color </p>`;
+      console.error("unexpected api  error:", error);
+    });
+});
