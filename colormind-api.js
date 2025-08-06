@@ -51,3 +51,16 @@ generateBtn.addEventListener("click", () => {
       console.error("unexpected api  error:", error);
     });
 });
+
+function displayPalette(palette) {
+  results.innerHTML = "";
+
+  palette.forEach((color, index) => {
+    const [r, g, b] = color;
+    const swatch = document.createElement("div");
+    swatch.className = "color-swatch";
+    swatch.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+    swatch.textContent = `Color ${index + 1}: rgb(${r}, ${g}, ${b})`;
+    results.appendChild(swatch);
+  });
+}
